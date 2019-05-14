@@ -1932,7 +1932,7 @@ int64_t GetBlockValue(int nHeight)
     if (nHeight == 0) {
 	nSubsidy = 0 * COIN;
     	} else if (nHeight == 1) {
-        nSubsidy = 5450000 * COIN;
+        nSubsidy = 5700000 * COIN;
 	} else if (nHeight <= Params().LAST_POW_BLOCK() && nHeight > 1) { //end PoW
         nSubsidy = 12 * COIN;
 	} else if (nHeight <= 238620 && nHeight > Params().LAST_POW_BLOCK()) { //Start PoS
@@ -1945,8 +1945,12 @@ int64_t GetBlockValue(int nHeight)
         nSubsidy = 6* COIN;
 	}
       int64_t nMoneySupply = chainActive.Tip()->nMoneySupply;
-     int nBlockValue = nSubsidy;
-
+      int64_t nBlockValue = nSubsidy;
+     if(nHeight > 1)
+        nBlockValue = nSubsidy - (nSubsidy/10); //deduct 10%
+     else
+        nBlockValue = nSubsidy;
+        
     if (nMoneySupply + nBlockValue >= Params().MaxMoneyOut())
         nBlockValue = Params().MaxMoneyOut() - nMoneySupply;
 
@@ -1955,37 +1959,6 @@ int64_t GetBlockValue(int nHeight)
     if (nHeight <= Params().LAST_POW_BLOCK()) {
         return nBlockValue;
     }
-/*    if (nHeight == 0) {
-        nSubsidy = 60001 * COIN;
-    } else if (nHeight < 86400 && nHeight > 0) {
-        nSubsidy = 250 * COIN;
-    } else if (nHeight < (Params().NetworkID() == CBaseChainParams::TESTNET ? 145000 : 151200) && nHeight >= 86400) {
-        nSubsidy = 225 * COIN;
-    } else if (nHeight <= Params().LAST_POW_BLOCK() && nHeight >= 151200) {
-        nSubsidy = 45 * COIN;
-    } else if (nHeight <= 302399 && nHeight > Params().LAST_POW_BLOCK()) {
-        nSubsidy = 45 * COIN;
-    } else if (nHeight <= 345599 && nHeight >= 302400) {
-        nSubsidy = 40.5 * COIN;
-    } else if (nHeight <= 388799 && nHeight >= 345600) {
-        nSubsidy = 36 * COIN;
-    } else if (nHeight <= 431999 && nHeight >= 388800) {
-        nSubsidy = 31.5 * COIN;
-    } else if (nHeight <= 475199 && nHeight >= 432000) {
-        nSubsidy = 27 * COIN;
-    } else if (nHeight <= 518399 && nHeight >= 475200) {
-        nSubsidy = 22.5 * COIN;
-    } else if (nHeight <= 561599 && nHeight >= 518400) {
-        nSubsidy = 18 * COIN;
-    } else if (nHeight <= 604799 && nHeight >= 561600) {
-        nSubsidy = 13.5 * COIN;
-    } else if (nHeight <= 647999 && nHeight >= 604800) {
-        nSubsidy = 9 * COIN;
-    } else if (nHeight < Params().Zerocoin_Block_V2_Start()) {
-        nSubsidy = 4.5 * COIN;
-    } else {
-        nSubsidy = 5 * COIN;
-    }*/
     return nBlockValue;
 }
 
@@ -3115,7 +3088,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     // two in the chain that violate it. This prevents exploiting the issue against nodes in their
     // initial block download.
     bool fEnforceBIP30 = (!pindex->phashBlock) || // Enforce on CreateNewBlock invocations which don't have a hash.
-                         !((pindex->nHeight == 0 && pindex->GetBlockHash() == uint256("0000030a37e1b2f2469ad724b4cb7e7252866e1e86376ad14112fcef4057b283")));
+                         !((pindex->nHeight == 0 && pindex->GetBlockHash() == uint256("00000c961c2148bda4b298f32636ad8ac5faa9c7723fa5597e14530a847c1924")));
 			   //||
                              //(pindex->nHeight == 91880 && pindex->GetBlockHash() == uint256("0x00000000000743f190a18c5577a3c2d2a1f610ae9601ac046a38084ccb7cd721")));
     if (fEnforceBIP30) {
