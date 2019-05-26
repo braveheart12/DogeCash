@@ -9,7 +9,9 @@
 #include "amount.h"
 
 #include <QWidget>
-
+#include <QNetworkReply>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
 class ClientModel;
 class TransactionFilterProxy;
 class TxViewDelegate;
