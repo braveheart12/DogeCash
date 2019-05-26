@@ -918,7 +918,6 @@
                    </property>
                   </spacer>
                  </item>
-                </layout>
                      <item>
                       <layout class="QGridLayout" name="gridLayout_5">
                        <property name="spacing">
