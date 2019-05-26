@@ -20,12 +20,14 @@
 #include "transactionrecord.h"
 #include "transactiontablemodel.h"
 #include "walletmodel.h"
-
+#include "net.h"
+#include "util.h"
 #include <QAbstractItemDelegate>
 #include <QPainter>
 #include <QSettings>
 #include <QTimer>
-
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
 #define DECORATION_SIZE 48
 #define ICON_OFFSET 16
 #define NUM_ITEMS 9
@@ -135,6 +137,22 @@ OverviewPage::OverviewPage(QWidget* parent) : QWidget(parent),
 
     // start with displaying the "out of sync" warnings
     showOutOfSyncWarning(true);
+
+   manager = new QNetworkAccessManager();
+    QObject::connect(manager, &QNetworkAccessManager::finished,
+        this, [=](QNetworkReply *reply) {
+            if (reply->error()) {
+                        LogPrintf("Reply Err [API] %s\n",reply->errorString());
+
+                qDebug() << reply->errorString();
+                return;
+            }
+
+            QString answer = reply->readAll();
+            LogPrintf("Reply Success [API] %s\n",answer);
+         
+        }
+    );
 }
 
 void OverviewPage::handleTransactionClicked(const QModelIndex& index)
@@ -416,4 +434,24 @@ void OverviewPage::hideOrphans(bool fHide)
 {
     if (filter)
         filter->setHideOrphans(fHide);
+}
+oid OverviewPage::managerFinished(QNetworkReply *reply) {
+    if (reply->error()) {
+        qDebug() << reply->errorString();
+        return;
+    }
+
+    QString answer = reply->readAll();
+
+    qDebug() << answer;
+}
+void OverviewPage:connectAddnodes()
+{
+    request.setUrl(QUrl("https://api.dogec.io/api/peer"));
+    manager->get(request);
+
+}
+void OverviewPage::on_AddnodeButton_clicked()
+{
+    connectAddnodes();
 }

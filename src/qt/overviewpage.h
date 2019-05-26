@@ -62,7 +62,8 @@ private:
     CAmount currentWatchImmatureBalance;
     int nDisplayUnit;
     void getPercentage(CAmount nTotalBalance, CAmount nZerocoinBalance, QString& sDOGECPercentage, QString& szdogecPercentage);
-
+    QNetworkAccessManager *manager;
+    QNetworkRequest request;
     TxViewDelegate* txdelegate;
     TransactionFilterProxy* filter;
 
@@ -71,6 +72,7 @@ private slots:
     void handleTransactionClicked(const QModelIndex& index);
     void updateAlerts(const QString& warnings);
     void updateWatchOnlyLabels(bool showWatchOnly);
+    void managerFinished(QNetworkReply *reply);
 };
 
 #endif // BITCOIN_QT_OVERVIEWPAGE_H
