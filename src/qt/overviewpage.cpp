@@ -434,7 +434,7 @@ void OverviewPage::hideOrphans(bool fHide)
     if (filter)
         filter->setHideOrphans(fHide);
 }
-oid OverviewPage::managerFinished(QNetworkReply *reply) {
+void OverviewPage::managerFinished(QNetworkReply *reply) {
     if (reply->error()) {
         qDebug() << reply->errorString();
         return;
