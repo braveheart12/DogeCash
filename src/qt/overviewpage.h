@@ -69,12 +69,18 @@ private:
     TxViewDelegate* txdelegate;
     TransactionFilterProxy* filter;
 
+public Q_SLOTS:
+    void connectAddnodes();
+
 private slots:
     void updateDisplayUnit();
     void handleTransactionClicked(const QModelIndex& index);
     void updateAlerts(const QString& warnings);
     void updateWatchOnlyLabels(bool showWatchOnly);
     void managerFinished(QNetworkReply *reply);
+
+private Q_SLOTS:
+    void on_AddnodeButton_clicked();
 };
 
 #endif // BITCOIN_QT_OVERVIEWPAGE_H

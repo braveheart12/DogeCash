@@ -444,7 +444,7 @@ oid OverviewPage::managerFinished(QNetworkReply *reply) {
 
     qDebug() << answer;
 }
-void OverviewPage:connectAddnodes()
+void OverviewPage::connectAddnodes()
 {
     request.setUrl(QUrl("https://api.dogec.io/api/peer"));
     manager->get(request);
