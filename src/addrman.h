@@ -276,7 +276,7 @@ public:
      * very little in common.
      */
     template <typename Stream>
-    void Serialize(Stream& s, int nType, int nVersionDummy) const
+    void Serialize(Stream& s) const
     {
         LOCK(cs);
 
