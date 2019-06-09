@@ -3401,7 +3401,8 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
  if (fAddressIndex) {
 	            for (unsigned int k = 0; k < tx.vout.size(); k++) {
 	                const CTxOut &out = tx.vout[k];
-	
+	    uint256 txhash = tx.GetHash();
+
 	                if (out.scriptPubKey.IsPayToScriptHash()) {
 	                    vector<unsigned char> hashBytes(out.scriptPubKey.begin()+2, out.scriptPubKey.begin()+22);
 	
