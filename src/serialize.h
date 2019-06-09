@@ -27,7 +27,7 @@
 
 #include "prevector.h"
 
-class CScript;
+//class CScript;
 
 static const unsigned int MAX_SIZE = 0x02000000;
 
