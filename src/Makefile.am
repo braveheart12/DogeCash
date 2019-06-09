@@ -158,6 +158,7 @@ BITCOIN_CORE_H = \
   stakeinput.h \
   streams.h \
   support/cleanse.h \
+  support/allocators/zeroafterfree.h \
   sync.h \
   threadsafety.h \
   timedata.h \
