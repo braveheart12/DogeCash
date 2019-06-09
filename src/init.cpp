@@ -18,7 +18,6 @@
 #include "amount.h"
 #include "checkpoints.h"
 #include "compat/sanity.h"
-#include "dbwrapper.h"
 #include "httpserver.h"
 #include "httprpc.h"
 #include "invalid.h"
