@@ -373,6 +373,12 @@ void OnRPCPreCommand(const CRPCCommand& cmd)
 std::string HelpMessage(HelpMessageMode mode)
 {
 
+    // Hidden Options
+    std::vector<std::string> hidden_args = {
+        "-forcecompactdb"};
+
+	
+	
     // When adding new options to the categories, please keep and ensure alphabetical ordering.
     string strUsage = HelpMessageGroup(_("Options:"));
     strUsage += HelpMessageOpt("-?", _("This help message"));
