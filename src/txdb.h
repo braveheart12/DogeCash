@@ -7,6 +7,7 @@
 #ifndef BITCOIN_TXDB_H
 #define BITCOIN_TXDB_H
 
+#include "dbwrapper.h"
 #include "leveldbwrapper.h"
 #include "main.h"
 #include "zdogec/zerocoin.h"
