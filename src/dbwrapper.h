@@ -5,6 +5,7 @@
 #ifndef BITCOIN_DBWRAPPER_H
 #define BITCOIN_DBWRAPPER_H
 
+#include "leveldbwrapper.h"
 #include "clientversion.h"
 #include "serialize.h"
 #include "streams.h"
