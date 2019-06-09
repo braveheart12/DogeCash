@@ -84,7 +84,9 @@ bool fVerifyingBlocks = false;
 unsigned int nCoinCacheSize = 5000;
 bool fAlerts = DEFAULT_ALERTS;
 bool fClearSpendCache = false;
-
+std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
+std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > addressUnspentIndex;
+std::vector<std::pair<CSpentIndexKey, CSpentIndexValue> > spentIndex;
 unsigned int nStakeMinAge = 60 * 60;
 int64_t nReserveBalance = 0;
 
@@ -2623,9 +2625,6 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
         *pfClean = false;
 
     bool fClean = true;
-    std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
-	std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > addressUnspentIndex;
-	std::vector<std::pair<CSpentIndexKey, CSpentIndexValue> > spentIndex;
     CBlockUndo blockUndo;
     CDiskBlockPos pos = pindex->GetUndoPos();
     if (pos.IsNull())
@@ -3324,7 +3323,8 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 	                    const CTxOut &prevout = view.GetOutputFor(tx.vin[j]);
 	                    uint160 hashBytes;
 	                    int addressType;
-	
+	                    const uint256 txhash = tx.GetHash();
+
 	                    if (prevout.scriptPubKey.IsPayToScriptHash()) {
 	                        hashBytes = uint160(vector <unsigned char>(prevout.scriptPubKey.begin()+2, prevout.scriptPubKey.begin()+22));
 	                        addressType = 2;
