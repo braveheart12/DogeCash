@@ -5579,7 +5579,7 @@ bool InitBlockIndex()
     // Use the provided setting for -txindex in the new database
     fTxIndex = GetBoolArg("-txindex", true);
     pblocktree->WriteFlag("txindex", fTxIndex);
-    / Use the provided setting for -addressindex in the new database
+   // Use the provided setting for -addressindex in the new database
 	    fAddressIndex = GetBoolArg("-addressindex", DEFAULT_ADDRESSINDEX);
 	    pblocktree->WriteFlag("addressindex", fAddressIndex);
 	
