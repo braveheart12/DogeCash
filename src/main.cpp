@@ -2633,9 +2633,7 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
 
     if (blockUndo.vtxundo.size() + 1 != block.vtx.size())
         return error("DisconnectBlock() : block and undo data inconsistent");
-        std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
-	    std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > addressUnspentIndex;
-	    std::vector<std::pair<CSpentIndexKey, CSpentIndexValue> > spentIndex;
+      
     // undo transactions in reverse order
     for (int i = block.vtx.size() - 1; i >= 0; i--) {
         const CTransaction& tx = block.vtx[i];
@@ -2682,8 +2680,11 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
         }
 
         uint256 hash = tx.GetHash();
+       	   std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
+	    std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > addressUnspentIndex;
+	    std::vector<std::pair<CSpentIndexKey, CSpentIndexValue> > spentIndex;
 if (fAddressIndex) {
-	
+
 	            for (unsigned int k = tx.vout.size(); k-- > 0;) {
 	                const CTxOut &out = tx.vout[k];
 	
