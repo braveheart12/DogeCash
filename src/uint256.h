@@ -300,7 +300,7 @@ public:
     }
 
     template <typename Stream>
-    void Serialize(Stream& s, int nType, int nVersion) const
+    void Serialize(Stream& s) const
     {
         s.write((char*)pn, sizeof(pn));
     }
