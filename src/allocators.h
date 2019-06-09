@@ -227,7 +227,7 @@ struct secure_allocator : public std::allocator<T> {
 //
 // Allocator that clears its contents before deletion.
 //
-template <typename T>
+/*template <typename T>
 struct zero_after_free_allocator : public std::allocator<T> {
     // MSVC8 default copy constructor is broken
     typedef std::allocator<T> base;
@@ -256,7 +256,7 @@ struct zero_after_free_allocator : public std::allocator<T> {
             memory_cleanse(p, sizeof(T) * n);
         std::allocator<T>::deallocate(p, n);
     }
-};
+};*/
 
 // This is exactly like std::string, but with a custom allocator.
 typedef std::basic_string<char, std::char_traits<char>, secure_allocator<char> > SecureString;
