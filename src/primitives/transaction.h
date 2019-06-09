@@ -247,8 +247,6 @@ public:
         s << vin;
         s << vout;
         s << nLockTime;
-        if (this->nVersion == 3 && this->nType != TRANSACTION_NORMAL)
-            s << vExtraPayload;
     }
     
     ADD_SERIALIZE_METHODS;
