@@ -8,7 +8,7 @@
 #define BITCOIN_PRIMITIVES_TRANSACTION_H
 
 #include "amount.h"
-#include "libzerocoin/CoinSpend.h"
+//#include "libzerocoin/CoinSpend.h"
 #include "script/script.h"
 #include "serialize.h"
 #include "uint256.h"
@@ -227,15 +227,30 @@ public:
 
     CTransaction& operator=(const CTransaction& tx);
 
+    template <typename Stream>
+    inline void Serialize(Stream& s) const {
+        int32_t n32bitVersion = this->nVersion | (this->nType << 16);
+        s << n32bitVersion;
+        s << vin;
+        s << vout;
+        s << nLockTime;
+        if (this->nVersion == 3 && this->nType != TRANSACTION_NORMAL)
+            s << vExtraPayload;
+    }
+    
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action) {
-        READWRITE(*const_cast<int32_t*>(&this->nVersion));
-        nVersion = this->nVersion;
-        READWRITE(*const_cast<std::vector<CTxIn>*>(&vin));
-        READWRITE(*const_cast<std::vector<CTxOut>*>(&vout));
-        READWRITE(*const_cast<uint32_t*>(&nLockTime));
+        int32_t n32bitVersion = this->nVersion | (this->nType << 16);
+        READWRITE(n32bitVersion);
+        if (ser_action.ForRead()) {
+            this->nVersion = (int16_t) (n32bitVersion & 0xffff);
+            this->nType = (int16_t) ((n32bitVersion >> 16) & 0xffff);
+        }
+        READWRITE(vin);
+        READWRITE(vout);
+        READWRITE(nLockTime);
         if (ser_action.ForRead())
             UpdateHash();
     }
@@ -319,7 +334,7 @@ struct CMutableTransaction
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    inline void SerializationOp(Stream& s, Operation ser_action) {
         READWRITE(this->nVersion);
         nVersion = this->nVersion;
         READWRITE(vin);
