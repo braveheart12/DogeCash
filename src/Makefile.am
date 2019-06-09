@@ -105,6 +105,7 @@ BITCOIN_CORE_H = \
   primitives/transaction.h \
   core_io.h \
   crypter.h \
+  dbwrapper.h \
   denomination_functions.h \
   obfuscation.h \
   obfuscation-relay.h \
@@ -210,6 +211,7 @@ libbitcoin_server_a_SOURCES = \
   blocksignature.cpp \
   chain.cpp \
   checkpoints.cpp \
+  dbwrapper.cpp \
   httprpc.cpp \
   httpserver.cpp \
   init.cpp \
