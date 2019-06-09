@@ -21,6 +21,8 @@
 #include "libzerocoin/Denominations.h"
 #include "libzerocoin/SpendType.h"
 
+#include "prevector.h"
+
 class CScript;
 
 static const unsigned int MAX_SIZE = 0x02000000;
