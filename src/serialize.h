@@ -6,7 +6,7 @@
 
 #ifndef dogecash_SERIALIZE_H
 #define dogecash_SERIALIZE_H
-
+#include "compat/endian.h"
 #include <algorithm>
 #include <assert.h>
 #include <ios>
@@ -107,7 +107,17 @@ inline unsigned int GetSerializeSize(signed long long a, int, int = 0) { return 
 inline unsigned int GetSerializeSize(unsigned long long a, int, int = 0) { return sizeof(a); }
 inline unsigned int GetSerializeSize(float a, int, int = 0) { return sizeof(a); }
 inline unsigned int GetSerializeSize(double a, int, int = 0) { return sizeof(a); }
-
+template<typename Stream> inline void ser_writedata32be(Stream &s, uint32_t obj)
+	{
+	    obj = htobe32(obj);
+	    s.write((char*)&obj, 4);
+	}
+template<typename Stream> inline uint32_t ser_readdata32be(Stream &s)
+	{
+	    uint32_t obj;
+	    s.read((char*)&obj, 4);
+	    return be32toh(obj);
+	}    
 template <typename Stream>
 inline void Serialize(Stream& s, char a, int, int = 0)
 {
