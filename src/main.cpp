@@ -2623,7 +2623,9 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
         *pfClean = false;
 
     bool fClean = true;
-
+    std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
+	std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > addressUnspentIndex;
+	std::vector<std::pair<CSpentIndexKey, CSpentIndexValue> > spentIndex;
     CBlockUndo blockUndo;
     CDiskBlockPos pos = pindex->GetUndoPos();
     if (pos.IsNull())
@@ -2680,9 +2682,6 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
         }
 
         uint256 hash = tx.GetHash();
-       	   std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
-	    std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > addressUnspentIndex;
-	    std::vector<std::pair<CSpentIndexKey, CSpentIndexValue> > spentIndex;
 if (fAddressIndex) {
 
 	            for (unsigned int k = tx.vout.size(); k-- > 0;) {
