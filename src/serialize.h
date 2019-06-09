@@ -12,10 +12,13 @@
 #include <ios>
 #include <limits>
 #include <map>
+#include <memory>
 #include <set>
 #include <stdint.h>
 #include <string.h>
 #include <string>
+#include <unordered_map>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 #include "libzerocoin/Denominations.h"
