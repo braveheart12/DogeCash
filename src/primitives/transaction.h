@@ -8,12 +8,24 @@
 #define BITCOIN_PRIMITIVES_TRANSACTION_H
 
 #include "amount.h"
-//#include "libzerocoin/CoinSpend.h"
+#include "libzerocoin/CoinSpend.h"
 #include "script/script.h"
 #include "serialize.h"
 #include "uint256.h"
 
 #include <list>
+
+
+/** Transaction types */
+enum {
+    TRANSACTION_NORMAL = 0,
+    TRANSACTION_PROVIDER_REGISTER = 1,
+    TRANSACTION_PROVIDER_UPDATE_SERVICE = 2,
+    TRANSACTION_PROVIDER_UPDATE_REGISTRAR = 3,
+    TRANSACTION_PROVIDER_UPDATE_REVOKE = 4,
+    TRANSACTION_COINBASE = 5,
+    TRANSACTION_QUORUM_COMMITMENT = 6,
+};
 
 class CTransaction;
 
