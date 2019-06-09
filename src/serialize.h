@@ -22,8 +22,8 @@
 #include <unordered_set>
 #include <utility>
 #include <vector>
-#include "libzerocoin/Denominations.h"
-#include "libzerocoin/SpendType.h"
+//#include "libzerocoin/Denominations.h"
+//#include "libzerocoin/SpendType.h"
 
 #include "prevector.h"
 
