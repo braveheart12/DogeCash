@@ -406,6 +406,7 @@ libbitcoin_util_a_SOURCES = \
   compat/glibc_sanity.cpp \
   compat/glibcxx_sanity.cpp \
   compat/strnlen.cpp \
+  prevector.h \
   random.cpp \
   rpc/protocol.cpp \
   support/cleanse.cpp \
