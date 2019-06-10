@@ -198,7 +198,7 @@ public:
     }
 
     template <typename Stream>
-    void Serialize(Stream& s) const
+    void Serialize(Stream& s, int nType, int nVersion) const
     {
         unsigned int nMaskSize = 0, nMaskCode = 0;
         CalcMaskSize(nMaskSize, nMaskCode);
@@ -216,7 +216,7 @@ public:
             for (unsigned int i = 0; i < 8 && 2 + b * 8 + i < vout.size(); i++)
                 if (!vout[2 + b * 8 + i].IsNull())
                     chAvail |= (1 << i);
-            ::Serialize(s, chAvail);
+            ::Serialize(s, chAvail, nType, nVersion);
         }
         // txouts themself
         for (unsigned int i = 0; i < vout.size(); i++) {
@@ -224,7 +224,7 @@ public:
                 ::Serialize(s, CTxOutCompressor(REF(vout[i])), nType, nVersion);
         }
         // coinbase height
-        ::Serialize(s, VARINT(nHeight));
+        ::Serialize(s, VARINT(nHeight), nType, nVersion);
     }
 
     template <typename Stream>
