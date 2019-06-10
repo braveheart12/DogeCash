@@ -175,14 +175,14 @@ enum
  * code. Adding "ADD_SERIALIZE_METHODS" in the body of the class causes these wrappers to be
  * added as members. 
  */
-#define ADD_SERIALIZE_METHODS                                        \
-size_t GetSerializeSize(int nType, int nVersion) const               \
-    {                                                                \
-        CSizeComputer s(nType, nVersion);                            \
-        NCONST_PTR(this)->SerializationOp(s, CSerActionSerialize()); \
-        return s.size();                                             \
-    }                                                                \
-
+#define ADD_SERIALIZE_METHODS                                         \
+/* size_t GetSerializeSize(int nType, int nVersion) const                \
+    {                                                                 \
+        CSizeComputer s(nType, nVersion);                             \
+        NCONST_PTR(this)->SerializationOp(s, CSerActionSerialize());  \
+        return s.size();                                              \
+    }*/                                                                 \
+                                                                      \
     template<typename Stream>                                         \
     void Serialize(Stream& s) const {                                 \
         NCONST_PTR(this)->SerializationOp(s, CSerActionSerialize());  \
