@@ -27,6 +27,7 @@
 #include "pow.h"
 #include "spork.h"
 #include "sporkdb.h"
+#include "streams.h"
 #include "swifttx.h"
 #include "txdb.h"
 #include "txmempool.h"
