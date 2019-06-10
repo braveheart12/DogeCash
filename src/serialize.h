@@ -577,6 +577,11 @@ protected:
 public:
     CVarInt(I& nIn) : n(nIn) { }
 
+    unsigned int GetSerializeSize(int, int) const
+    {
+        return GetSizeOfVarInt<I>(n);
+    }
+
     template<typename Stream>
     void Serialize(Stream &s) const {
         WriteVarInt<Stream,I>(s, n);
