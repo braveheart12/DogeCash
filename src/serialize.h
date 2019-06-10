@@ -721,13 +721,13 @@ template<typename Stream, typename T> void Unserialize(Stream& os, std::unique_p
 template<typename Stream, typename T>
 inline void Serialize(Stream& os, const T& a)
 {
-    a.Serialize(os);
+    Serialize(os, a);
 }
 
 template<typename Stream, typename T>
 inline void Unserialize(Stream& is, T& a)
 {
-    a.Unserialize(is);
+    Unserialize(is, a);
 }
 
 
