@@ -14,6 +14,7 @@
 #include "version.h"
 
 #include <typeindex>
+#include <memory>
 
 #include <boost/filesystem/path.hpp>
 
