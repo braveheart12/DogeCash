@@ -18,6 +18,7 @@
 #include "script/script_error.h"
 #include "script/sign.h"
 #include "script/standard.h"
+#include "serialize.h"
 #include "swifttx.h"
 #include "uint256.h"
 #include "utilmoneystr.h"

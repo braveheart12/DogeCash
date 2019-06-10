@@ -9,6 +9,7 @@
 
 #include "netbase.h"
 #include "protocol.h"
+#include "serialize.h"
 #include "random.h"
 #include "sync.h"
 #include "timedata.h"

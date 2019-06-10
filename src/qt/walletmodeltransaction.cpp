@@ -4,6 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "walletmodeltransaction.h"
+#include "serialize.h"
 
 #include "wallet/wallet.h"
 
