@@ -25,6 +25,7 @@
 #include "net.h"
 #include "obfuscation.h"
 #include "pow.h"
+#include "serialize.h"
 #include "spork.h"
 #include "sporkdb.h"
 #include "streams.h"
