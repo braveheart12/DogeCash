@@ -8,6 +8,7 @@
 #ifndef dogecash_UINT256_H
 #define dogecash_UINT256_H
 
+#include "serialize.h"
 #include <assert.h>
 #include <cstring>
 #include <stdexcept>

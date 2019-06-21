@@ -16,6 +16,7 @@
 #include "keystore.h"
 #include "init.h"
 #include "wallet/wallet.h"
+#include "serialize.h"
 #include "script/sign.h"
 #include "script/interpreter.h"
 #include "utilmoneystr.h"

@@ -10,6 +10,7 @@
 #include "guiutil.h"
 #include "main.h"
 #include "net.h"
+#include "serialize.h"
 #include "txdb.h"
 #include "ui_blockexplorer.h"
 #include "ui_interface.h"

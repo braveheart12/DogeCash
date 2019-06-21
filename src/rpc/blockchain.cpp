@@ -11,6 +11,7 @@
 #include "main.h"
 #include "rpc/server.h"
 #include "sync.h"
+#include "serialize.h"
 #include "txdb.h"
 #include "util.h"
 #include "utilmoneystr.h"

@@ -8,6 +8,7 @@
 
 #include "clientversion.h"
 #include "main.h"
+#include "serialize.h"
 #include "streams.h"
 #include "util.h"
 #include "utilmoneystr.h"

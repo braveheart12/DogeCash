@@ -15,6 +15,7 @@
 #include "pow.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
+#include "serialize.h"
 #include "timedata.h"
 #include "util.h"
 #include "utilmoneystr.h"

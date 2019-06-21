@@ -25,6 +25,7 @@
 #include "script/script.h"
 #include "script/sigcache.h"
 #include "script/standard.h"
+#include "serialize.h"
 #include "sync.h"
 #include "tinyformat.h"
 #include "txmempool.h"
