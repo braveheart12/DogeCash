@@ -14,7 +14,6 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or dogecashd/dogecash-qt (on Linux).
 
-
 Compatibility
 ==============
 
@@ -53,14 +52,6 @@ User Experience
 
 Many users were not able to get initial connections to peers,due to the seednodes being already fully connected,this release should fix the problem and give the users the most reliable peers possible.
 
-DogeCash Daemon & Client (RPC Changes)
---------------
-
-
-Technical Changes
---------------
-
-
 *3.1.1* Change log
 --------------
 
@@ -68,8 +59,8 @@ Detailed release notes follow. This overview includes changes that affect behavi
 
 ### GUI
  - `7946315651a869b5c2693226d4a79e0f439f893c` Fixed Color codes of governance and on hover labels (Liquid369)
- - '48d08c4d27d29477adac0f4d855bc3e03fcbe330' Add Update dialog code from DeVault (Modified to work with PIVX codebases) (akshaynexus)
- - '258f3b45e1d9d6855e4d6c9f0de5338b206afae3' Add blockhash + datadir to information tab (Mrs-X)
+ - `48d08c4d27d29477adac0f4d855bc3e03fcbe330` Add Update dialog code from DeVault (Modified to work with PIVX codebases) (akshaynexus)
+ - `258f3b45e1d9d6855e4d6c9f0de5338b206afae3` Add blockhash + datadir to information tab (Mrs-X)
  
 ## Credits
 Thanks to everyone who directly or indirectly contributed to this release:
