@@ -351,8 +351,6 @@ void openDebugLogfile()
 
 void openConfigfile()
 {
-
-
     boost::filesystem::path pathConfig = GetConfigFile();
 
 #if defined(Q_OS_WIN32)
@@ -364,6 +362,7 @@ void openConfigfile()
     /* Open dogecash.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
+        
 }
 
 void openMNConfigfile()
