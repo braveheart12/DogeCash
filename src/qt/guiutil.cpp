@@ -59,7 +59,7 @@
 #include <QThread>
 #include <QUrlQuery>
 #include <QMouseEvent>
-
+#include <QProcess>
 
 #if BOOST_FILESYSTEM_VERSION >= 3
 static boost::filesystem::detail::utf8_codecvt_facet utf8;
@@ -351,7 +351,15 @@ void openDebugLogfile()
 
 void openConfigfile()
 {
+
+
     boost::filesystem::path pathConfig = GetConfigFile();
+
+#if defined(Q_OS_WIN32)
+    QProcess *proc = new QProcess(this);
+    proc->start("notepad.exe boostPathToQString(pathConfig)")
+
+#endif
 
     /* Open dogecash.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
